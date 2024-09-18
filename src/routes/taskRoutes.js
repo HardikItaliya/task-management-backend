@@ -1,9 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const Task = require("../models/Task");
+const {
+  taskValidationRules,
+  handleValidationErrors,
+} = require("../validation/taskValidation");
 
 // Create a new task
-router.post("/tasks", async (req, res) => {
+router.post("/tasks", taskValidationRules, handleValidationErrors, async (req, res) => {
   try {
     const { name, dueDate, priority } = req.body;
     if (!name || !dueDate || !priority) {
@@ -28,10 +32,10 @@ router.get("/tasks", async (req, res) => {
 });
 
 // Update a task by ID
-router.put("/tasks/:id", async (req, res) => {
+router.put("/tasks/:id", taskValidationRules, handleValidationErrors, async (req, res) => {
   try {
     const { name, dueDate, priority } = req.body;
-    console.log("req.params.id", req.params.id)
+    console.log("req.params.id", req.params.id);
     const task = await Task.findById(req.params.id);
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
