@@ -27,11 +27,11 @@ mongoose
 
 // Routes
 app.use("/api", taskRoutes);
-app.use("/", (req, res) => {
-  res.status(200).json({
-    message: "hi it is running"
-  });
-});
+// app.use("/", (req, res) => {
+//   res.status(200).json({
+//     message: "hi it is running"
+//   });
+// });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
