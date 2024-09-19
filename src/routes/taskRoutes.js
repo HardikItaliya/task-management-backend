@@ -35,7 +35,6 @@ router.get("/tasks", async (req, res) => {
 router.put("/tasks/:id", taskValidationRules, handleValidationErrors, async (req, res) => {
   try {
     const { name, dueDate, priority } = req.body;
-    console.log("req.params.id", req.params.id);
     const task = await Task.findById(req.params.id);
     if (!task) {
       return res.status(404).json({ message: "Task not found" });
