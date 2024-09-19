@@ -11,8 +11,8 @@ const taskValidationRules = [
   check("priority")
     .notEmpty()
     .withMessage("Priority is required")
-    .isIn(["Low", "Medium", "High", "Very High"])
-    .withMessage("Priority must be one of Low, Medium, High, or Very High"),
+    // .isIn(["Low", "Medium", "High", "Very High"])
+    // .withMessage("Priority must be one of Low, Medium, High, or Very High"),
 ];
 
 // Handle validation errors
